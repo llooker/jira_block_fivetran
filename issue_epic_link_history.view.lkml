@@ -1,5 +1,5 @@
-view: issue_link {
-  sql_table_name: JIRA.ISSUE_LINK ;;
+view: issue_epic_link_history {
+  sql_table_name: JIRA.ISSUE_EPIC_LINK_HISTORY ;;
 
   dimension: _fivetran_synced {
     type: string
@@ -17,9 +17,9 @@ view: issue_link {
     sql: ${TABLE}.RELATED_ISSUE_ID ;;
   }
 
-  dimension: relationship {
+  dimension: time {
     type: string
-    sql: ${TABLE}.RELATIONSHIP ;;
+    sql: ${TABLE}.TIME ;;
   }
 
   measure: count {

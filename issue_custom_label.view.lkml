@@ -1,5 +1,5 @@
-view: issue_link {
-  sql_table_name: JIRA.ISSUE_LINK ;;
+view: issue_custom_label {
+  sql_table_name: JIRA.ISSUE_CUSTOM_LABEL ;;
 
   dimension: _fivetran_synced {
     type: string
@@ -12,14 +12,9 @@ view: issue_link {
     sql: ${TABLE}.ISSUE_ID ;;
   }
 
-  dimension: related_issue_id {
-    type: number
-    sql: ${TABLE}.RELATED_ISSUE_ID ;;
-  }
-
-  dimension: relationship {
+  dimension: value {
     type: string
-    sql: ${TABLE}.RELATIONSHIP ;;
+    sql: ${TABLE}.VALUE ;;
   }
 
   measure: count {

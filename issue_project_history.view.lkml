@@ -1,48 +1,53 @@
-view: issue_project_history {
-  sql_table_name: jira.issue_project_history ;;
+  view: issue_project_history {
+    sql_table_name: JIRA.ISSUE_PROJECT_HISTORY ;;
 
-  dimension_group: _fivetran_synced {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}._fivetran_synced ;;
-  }
+    dimension_group: _fivetran_synced {
+      type: time
+      timeframes: [
+        raw,
+        time,
+        date,
+        week,
+        month,
+        quarter,
+        year
+      ]
+      sql: ${TABLE}._FIVETRAN_SYNCED ;;
+    }
 
-  dimension: issue_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}.issue_id ;;
-  }
+    dimension: issue_id {
+      type: number
+      # hidden: yes
+      sql: ${TABLE}.ISSUE_ID ;;
+    }
 
-  dimension: project_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}.project_id ;;
-  }
+    dimension: project_id {
+      type: number
+      # hidden: yes
+      sql: ${TABLE}.PROJECT_ID ;;
+    }
 
-  dimension_group: time {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.time ;;
-  }
+    dimension: time {
+      type: string
+      sql: ${TABLE}.TIME ;;
+    }
 
-  measure: count {
-    type: count
-    drill_fields: [issue.id, issue.epic_name, project.name, project.id]
+    dimension_group: time {
+      type: time
+      timeframes: [
+        raw,
+        time,
+        date,
+        week,
+        month,
+        quarter,
+        year
+      ]
+      sql: ${TABLE}.TIME ;;
+    }
+
+    measure: count {
+      type: count
+      drill_fields: [issue.id, issue.epic_name, project.id, project.name]
+    }
   }
-}

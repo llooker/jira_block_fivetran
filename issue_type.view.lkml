@@ -1,49 +1,49 @@
-view: issue_type {
-  sql_table_name: jira.issue_type ;;
+  view: issue_type {
 
-  dimension: id {
-    primary_key: yes
-    type: number
-    hidden: yes
-    sql: ${TABLE}.id ;;
-  }
+    sql_table_name: JIRA.ISSUE_TYPE ;;
 
-  dimension_group: _fivetran_synced {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}._fivetran_synced ;;
-  }
+    dimension: id {
+      primary_key: yes
+      type: number
+      sql: ${TABLE}.ID ;;
+    }
 
-  dimension: description {
-    type: string
-    sql: ${TABLE}.description ;;
-  }
+    dimension_group: _fivetran_synced {
+      type: time
+      timeframes: [
+        raw,
+        time,
+        date,
+        week,
+        month,
+        quarter,
+        year
+      ]
+      sql: ${TABLE}._FIVETRAN_SYNCED ;;
+    }
 
-  dimension: name {
-    type: string
-    sql: ${TABLE}.name ;;
-  }
+    dimension: description {
+      type: string
+      sql: ${TABLE}.DESCRIPTION ;;
+    }
 
-  dimension: subtask {
-    type: yesno
-    sql: ${TABLE}.subtask ;;
-  }
+    dimension: name {
+      type: string
+      sql: ${TABLE}.NAME ;;
+    }
 
-  dimension: is_bug {
-    type: yesno
-    sql: ${name} = 'Bug' ;;
-  }
+    dimension: subtask {
+      type: yesno
+      sql: ${TABLE}.SUBTASK ;;
+    }
 
-  measure: count {
-    type: count
-    drill_fields: [id, name]
+    dimension: is_bug {
+      type: yesno
+      sql: ${name} = 'Bug' ;;
+    }
+
+    measure: count {
+      type: count
+      drill_fields: [id, name]
+    }
   }
-}

@@ -1,10 +1,10 @@
 view: fivetran_audit {
-  sql_table_name: jira.fivetran_audit ;;
+  sql_table_name: JIRA.FIVETRAN_AUDIT ;;
 
   dimension: id {
     primary_key: yes
     type: string
-    sql: ${TABLE}.id ;;
+    sql: ${TABLE}.ID ;;
   }
 
   dimension_group: done {
@@ -18,12 +18,12 @@ view: fivetran_audit {
       quarter,
       year
     ]
-    sql: ${TABLE}.done ;;
+    sql: ${TABLE}.DONE ;;
   }
 
   dimension: message {
     type: string
-    sql: ${TABLE}.message ;;
+    sql: ${TABLE}.MESSAGE ;;
   }
 
   dimension_group: progress {
@@ -37,17 +37,17 @@ view: fivetran_audit {
       quarter,
       year
     ]
-    sql: ${TABLE}.progress ;;
+    sql: ${TABLE}.PROGRESS ;;
   }
 
   dimension: rows_updated_or_inserted {
     type: number
-    sql: ${TABLE}.rows_updated_or_inserted ;;
+    sql: ${TABLE}.ROWS_UPDATED_OR_INSERTED ;;
   }
 
   dimension: schema {
     type: string
-    sql: ${TABLE}.schema ;;
+    sql: ${TABLE}.SCHEMA ;;
   }
 
   dimension_group: start {
@@ -61,22 +61,22 @@ view: fivetran_audit {
       quarter,
       year
     ]
-    sql: ${TABLE}.start ;;
+    sql: ${TABLE}.START ;;
   }
 
   dimension: status {
     type: string
-    sql: ${TABLE}.status ;;
+    sql: ${TABLE}.STATUS ;;
   }
 
   dimension: table {
     type: string
-    sql: ${TABLE}."table" ;;
+    sql: ${TABLE}."TABLE" ;;
   }
 
   dimension: update_id {
     type: string
-    sql: ${TABLE}.update_id ;;
+    sql: ${TABLE}.UPDATE_ID ;;
   }
 
   dimension_group: update_started {
@@ -90,7 +90,7 @@ view: fivetran_audit {
       quarter,
       year
     ]
-    sql: ${TABLE}.update_started ;;
+    sql: ${TABLE}.UPDATE_STARTED ;;
   }
 
   measure: count {
