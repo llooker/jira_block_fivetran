@@ -15,10 +15,13 @@
   * Project Managers and Scrum Masters can easily build their own dashboards
   * Enable users to ask and answer their own questions, save and share their own reports
 
+### About the Looker Jira Block
+
 Looker’s Jira block is designed to work with the Fivetran Jira schema.  Fivetran has abstracted away many of the complexities of the Jira data model to make it easier for reporting purposes.  Because the Jira schema is very customizable and is different for every implementation, rather than attempting to replicate the exact structure of the Jira schema, Fivetran stores the data in more compact format, with Issues as the central focus.
 
-The Fivetran schema for Jira data can be found here:
-https://www.fivetran.com/docs/applications/jira
+The Fivetran schema for Jira data can be found [here](https://www.fivetran.com/docs/applications/jira).
+
+A more detailed description of how to deploy Looker Blocks in your environment can be found [here](https://discourse.looker.com/t/copying-a-lookml-project-into-looker-from-a-github-repo/1209).
 
 
 Understanding the Fivetran implementation of the Jira data model is important for understanding the LookML model and how you will enhance it based on your own customized version of Jira.  In a typical implementation, the majority of the customizations will be related to the `issue` table, so most of the following discussion will focus on the `issue` table.  The `issue` table is comprised of three primary types of fields:
@@ -37,14 +40,14 @@ The `issue_extended` table is a denormalized Looker PDT that contains all of the
 
 1. The number of custom fields and associated history tables will differ for each Jira installation.  As a result, the Looker Jira Block will require customization before it can be used.  The LookML model and view files included with the block provide a good general template, but will definitely differ from your Fivetran schema.  In particular, the following changes will need to be made to the model:
 The fields in the issue table will need to be updated to match your own issue table.  You will likely need to add new fields to the Looker issue view file for your own custom fields, as well as removing fields from the view file that are not included in your installation.
-1. Looker view files will need to be removed that are associated with Multi-Select Fields that are not included in your installation.  These tables have the naming convention `issue_<field_name>`
-1. Looker view files that are associated with history tables associated with both Single Select Fields and Multi Select Fields that are not included in your installation will need to be removed.  These tables have the naming convention `issue_<field_name>_history`.
-1. Additional View Files will need to be added for the additional fields and history tables included in your installation.  Adding these additional view files is a simple process.  While in Development Mode, select “Create View From Table” from the “Add Files” menu.  Select the correct connection and schema, and then add select each of that tables that do not already appear in your current list of view files.  Looker will automatically generate the view files for each additional table.
-1. Modify the Looker view file `issue_history_all` to remove any of the `UNION`s defined for tables that are not part of your installation.
-1. Modify the Looker view file `issue_history_all` to add any new `UNION`s required for history tables that are not currently included.
+2. Looker view files will need to be removed that are associated with Multi-Select Fields that are not included in your installation.  These tables have the naming convention `issue_<field_name>`
+3. Looker view files that are associated with history tables associated with both Single Select Fields and Multi Select Fields that are not included in your installation will need to be removed.  These tables have the naming convention `issue_<field_name>_history`.
+4. Additional View Files will need to be added for the additional fields and history tables included in your installation.  Adding these additional view files is a simple process.  While in Development Mode, select “Create View From Table” from the “Add Files” menu.  Select the correct connection and schema, and then add select each of that tables that do not already appear in your current list of view files.  Looker will automatically generate the view files for each additional table.
+5. Modify the Looker view file `issue_history_all` to remove any of the `UNION`s defined for tables that are not part of your installation.
+6. Modify the Looker view file `issue_history_all` to add any new `UNION`s required for history tables that are not currently included.
 
-Notes for updating #6 and #8 above:
-When adding new tables to the `UNION` in `issue_history_single_value` and `issue_history_multi_value`, there are two different forms that the new UNIONed table can take -
+Notes for updating #5 and #6 above:
+When adding new tables to the `UNION` in `issue_history_all`, there are two different forms that the new UNIONed table can take -
 1.  A history table for a standard field.  This is a field that is included as part of the default Jira schema.  These history tables can be identified by examining the table definition.  History tables for standard fields will contain a column named value, which will contain the actual text representation of the value.  For example, in the table `issue_browser_history`, which stores the history for a standard field, the value column contains entries such as Chrome, Safari and Firefox.
 2.  A history table for a custom field.  This is a field that was added by the Jira administrator and is not part of the default Jira schema.  These history tables can also be identified by examining the table definition.  History tables for custom fields will contain a column named `field_option_id`.  This field contains a numeric value, which is actually a foreign key to the table `field_option`, which contains the domain of allowable values for each custom field.
 
