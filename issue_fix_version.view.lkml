@@ -1,5 +1,5 @@
-view: issue_fix_version_s {
-  sql_table_name: JIRA.ISSUE_FIX_VERSION_S ;;
+view: issue_fix_version {
+  sql_table_name: JIRA.ISSUE_FIX_VERSION ;;
 
   dimension: _fivetran_synced {
     type: string

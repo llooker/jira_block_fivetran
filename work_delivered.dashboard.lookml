@@ -12,9 +12,6 @@
     - issue.total_story_points
     fill_fields:
     - issue.resolved_date
-    filters:
-      issue.is_issue_resolved: 'Yes'
-      issue.resolved_date: 30 days
     sorts:
     - issue.resolved_date
     limit: 500

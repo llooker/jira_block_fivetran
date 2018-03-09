@@ -15,8 +15,6 @@
     - status_category.name
     fill_fields:
     - issue.created_date
-    filters:
-      issue.created_month: 12 months
     sorts:
     - issue.created_date
     - status_category.name

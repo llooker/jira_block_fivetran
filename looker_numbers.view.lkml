@@ -30,8 +30,10 @@ derived_table: {
         (SELECT 0 as n UNION SELECT 1) p10
 
  ;;
+  indexes: ["number"]
   persist_for: "24 hours"
-  distribution_style: all
+  # For Redshift only
+  #distribution_style: all
 }
 
 measure: count {

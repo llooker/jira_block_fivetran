@@ -28,18 +28,18 @@ explore: sprint {
 }
 
 # Update based on how you are associating versions to
-#explore: version {
-#  join: issue_fix_version_s {
-#    type: left_outer
-#    relationship: one_to_many
-#    sql_on: ${version.id} = ${issue_fix_version_s.version_id} ;;
-#  }
-#  join: issue_extended {
-#    type: left_outer
-#    relationship: one_to_one
-#    sql_on: ${issue_fix_version_s.issue_id} = ${issue_extended.id} ;;
-#  }
-#}
+explore: version {
+  join: issue_fix_version {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${version.id} = ${issue_fix_version.version_id} ;;
+  }
+  join: issue {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${issue_fix_version.issue_id} = ${issue.id} ;;
+  }
+}
 
 explore: issue_history_2 {
   label: "Issue History"
@@ -97,17 +97,6 @@ explore: project {
   join:  status_category {
     type:  left_outer
     sql_on: ${status.status_category_id} = ${status_category.id} ;;
-    relationship: many_to_one
-  }
-  join: issue_components {
-    type: left_outer
-    fields: []
-    sql_on: ${issue.id} = ${issue_components.issue_id} ;;
-    relationship: many_to_one
-  }
-  join: component {
-    type: left_outer
-    sql_on: ${issue_components.component_id} = ${component.id};;
     relationship: many_to_one
   }
 

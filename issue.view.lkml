@@ -103,7 +103,13 @@ view: issue {
     sql: ${TABLE}.original_estimate ;;
   }
 
-  dimension: project_id {
+  dimension: priority {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.priority ;;
+  }
+
+  dimension: project {
     label: "Current Project"
     hidden: yes
     type: number

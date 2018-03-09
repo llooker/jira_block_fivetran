@@ -33,7 +33,8 @@ view: issue_history_all {
       LEFT OUTER JOIN jira.field_option fo on trh.field_option_id = fo.id
        ;;
     indexes: ["issue_id", "time"]
-    distribution_style: all
+    # For Redshift only
+    #distribution_style: all
   }
 
   measure: count {

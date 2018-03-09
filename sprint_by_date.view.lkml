@@ -1,8 +1,9 @@
 view: sprint_by_date {
   derived_table: {
     persist_for: "12 hours"
-#     sortkeys: ["sprint_id","issue_id"]
-    distribution_style: all
+    # For Redshift only
+    #sortkeys: ["sprint_id","issue_id"]
+    #distribution_style: all
     sql: SELECT "issue_id",
        "time" as start_time,
        (select NVL(min(time), '9999-01-01') as end_time from jira.issue_sprint_history ish2
@@ -21,6 +22,8 @@ FROM jira.issue_sprint ist
 WHERE 1 = 1
 AND  NOT EXISTS (select issue_id from jira.issue_sprint_history where issue_id = ist.issue_id)
  ;;
+
+    indexes: ["sprint_id", "issue_id"]
   }
 
   measure: count {

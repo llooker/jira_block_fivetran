@@ -199,13 +199,13 @@
     explore: version
     type: table
     fields:
-    - issue2.id
-    - issue2.status_name
-    - issue2.severity_name
-    - issue2.issue_type_name
-    - issue2.story_points
+    - issue_extended.id
+    - issue_extended.status_name
+    - issue_extended.severity_name
+    - issue_extended.issue_type_name
+    - issue_extended.story_points
     sorts:
-    - issue2.id
+    - issue_extended.id
     limit: 500
     column_limit: 50
     show_view_names: true
