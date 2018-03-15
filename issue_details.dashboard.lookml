@@ -292,9 +292,7 @@
     - version.name
     - version.start_date
     - version.release_date
-    - issue.id
-    filters:
-      issue.id: '44466'
+    - issue_extended.id
     sorts:
     - version.start_date desc
     limit: 500
