@@ -1,4 +1,4 @@
-connection: "connection_name"
+connection: "fivetran_looker_blocks_demo"
 
 # include all the views
 include: "*.view"
