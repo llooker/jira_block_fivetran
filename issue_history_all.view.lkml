@@ -34,7 +34,7 @@ view: issue_history_all {
        ;;
     indexes: ["issue_id", "time"]
     # For Redshift only
-    #distribution_style: all
+    distribution_style: all
   }
 
   measure: count {

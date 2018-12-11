@@ -33,7 +33,7 @@ derived_table: {
   indexes: ["number"]
   persist_for: "24 hours"
   # For Redshift only
-  #distribution_style: all
+  distribution_style: all
 }
 
 measure: count {

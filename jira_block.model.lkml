@@ -1,4 +1,4 @@
-connection: "fivetran_looker_blocks_demo"
+connection: "pacific_production"
 
 # include all the views
 include: "*.view"

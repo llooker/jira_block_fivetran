@@ -8,7 +8,7 @@ view: looker_calendar {
 derived_table: {
   persist_for: "24 hours"
   # For redshift
-  #distribution_style: all
+  distribution_style: all
   sql: SELECT
           DATEADD(day,CAST(numbers.number AS INT), '2013-01-01') as series_date
       FROM ${looker_numbers.SQL_TABLE_NAME} AS numbers ;;

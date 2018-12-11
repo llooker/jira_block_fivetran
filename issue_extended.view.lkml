@@ -106,6 +106,8 @@ view: issue_extended {
         ;;
 
     indexes: ["id"]
+    # For Redshift only
+    distribution_style: all
   }
 
   dimension: id {

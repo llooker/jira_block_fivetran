@@ -24,6 +24,8 @@ AND  NOT EXISTS (select issue_id from jira.issue_sprint_history where issue_id =
  ;;
 
     indexes: ["sprint_id", "issue_id"]
+    # For Redshift only
+    distribution_style: all
   }
 
   measure: count {
