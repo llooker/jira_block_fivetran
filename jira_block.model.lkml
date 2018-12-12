@@ -24,6 +24,11 @@ explore: sprint {
     sql_on: ${issue_sprint.issue_id} = ${issue.id} ;;
     relationship: one_to_many
   }
+  join: board {
+    type: left_outer
+    sql_on: ${sprint.board_id} = ${board.id} ;;
+    relationship: one_to_one
+  }
 
 }
 
