@@ -29,8 +29,8 @@ view: sprint_start_points {
     sql: ${TABLE}.name ;;
   }
 
-  dimension: start_points {
-    type: number
+  measure: start_points {
+    type: sum
     sql: ${TABLE}.start_points ;;
   }
 

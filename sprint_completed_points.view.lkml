@@ -29,8 +29,8 @@ view: sprint_completed_points {
     sql: ${TABLE}.name ;;
   }
 
-  dimension: completed_points {
-    type: number
+  measure : completed_points {
+    type: sum
     sql: ${TABLE}.completed_points ;;
   }
 
