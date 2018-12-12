@@ -34,6 +34,11 @@ explore: sprint {
     sql_on: ${sprint.id} = ${sprint_start_points.id} ;;
     relationship: one_to_one
   }
+  join: sprint_completed_points {
+    type: left_outer
+    sql_on: ${sprint.id} = ${sprint_completed_points.id} ;;
+    relationship: one_to_one
+  }
 }
 
 # Update based on how you are associating versions to
