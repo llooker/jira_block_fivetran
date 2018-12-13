@@ -9,7 +9,7 @@ view: sprint_completed_points {
          ON sprint.id = issue_sprint.sprint_id
       JOIN jira.issue AS issue
          ON issue_sprint.issue_id = issue.id
-      WHERE ((DATE(CONVERT_TIMEZONE('UTC', 'America/New_York', issue.resolved ))) IS NOT NULL)
+      WHERE ((DATE(CONVERT_TIMEZONE('UTC', 'America/New_York', issue.resolved ))) IS NOT NULL) AND ((DATE(CONVERT_TIMEZONE('UTC', 'America/New_York', issue.resolved ))) <= sprint.END_DATE) AND ((DATE(CONVERT_TIMEZONE('UTC', 'America/New_York', issue.resolved ))) >= sprint.START_DATE)
       GROUP BY sprint.id, sprint.name
        ;;
   }
