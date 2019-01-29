@@ -39,6 +39,16 @@ explore: sprint {
     sql_on: ${sprint.id} = ${sprint_completed_points.id} ;;
     relationship: one_to_one
   }
+  join: issue_type {
+    type: left_outer
+    sql_on: ${issue.issue_type} = ${issue_type.id} ;;
+  }
+
+  join: epic {
+    type: left_outer
+    sql_on: ${epic.id} = ${issue.JK_EpicLink};;
+#    relationship: one_to_many
+  }
 }
 
 # Update based on how you are associating versions to

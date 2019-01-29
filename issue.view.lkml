@@ -46,6 +46,34 @@ view: issue {
     sql: ${TABLE}.assignee ;;
   }
 
+  dimension: JK_key {
+    type: string
+    sql: ${TABLE}.key ;;
+  }
+
+  dimension: JK_epic_name {
+    type: string
+    sql: ${TABLE}.epic_name ;;
+  }
+
+  dimension: JK_IssueSummary {
+    type: string
+    sql: ${TABLE}.summary ;;
+  }
+  dimension: JK_IssueType {
+    type: string
+    sql: ${TABLE}.issue_type ;;
+  }
+
+  dimension: JK_EpicLink {
+    type: string
+    sql: ${TABLE}.epic_link ;;
+  }
+  dimension:  JK_Resolution {
+    type: string
+    sql:  ${TABLE}.resolution ;;
+  }
+
   dimension_group: created {
     group_label: "Dates"
     type: time
